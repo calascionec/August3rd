@@ -49,7 +49,7 @@
   $cars = array($car1,$car2,$car3,$car4);
   $cars_matching_search = array();
   foreach ($cars as $car) {
-    if ($car->getPrice() < $_GET["price"]) {
+    if ($car->getPrice() < $_GET["price"] && $car->getMiles() < $_GET["miles"]) {
       array_push($cars_matching_search, $car);
     }
   }
