@@ -29,9 +29,34 @@ class Parcel{
 
     function volume(){return $this->length * $this->height * $this->width;}
 
+    function costToShip() {
+      $shipping_type = $_GET["shipping"];
+      $shipping_type_cost = 0;
+      $shipping_range_by_volume = array(10,40,60); //for easy resetting of volume cost
+      if ($shipping_type === "Regular") {
+        $shipping_type_cost = 5.00;
+      } else if ($shipping_type === "SecondDay") {
+        $shipping_type_cost = 10.00;
+      }else {
+        $shipping_type_cost = 20.00;
+      }
+
+      if($this->volume() < 50) {
+        return $shipping_type_cost = $shipping_type_cost + $shipping_range_by_volume[0];
+      }
+      else if ($this->volume() >= 50 && $this->volume() < 100){
+
+      return  $shipping_type_cost = $shipping_type_cost + $shipping_range_by_volume[1];
+      }
+      else {return $shipping_type_cost = $shipping_type_cost + $shipping_range_by_volume[2]; }
 
 }
-$a = new Parcel($_GET["length"],$_GET["width"],$_GET["height"],$_GET["weight"]);
+
+
+}
+  $a = new Parcel($_GET["length"],$_GET["width"],$_GET["height"],$_GET["weight"]);
+
+
 
 ?>
 
@@ -60,7 +85,9 @@ $theString .= "</li>";
 $theString .= "<li> The Parcel Volume is: ";
 $theString .= $a->volume();
 $theString .= "</li>";
-
+$theString .= "<li> The Cost to Ship is: ";
+$theString .= $a->costToShip();
+$theString .= "</li>";
 echo $theString;
 
 ?>
