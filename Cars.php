@@ -14,7 +14,7 @@
         $this->miles = $miles;
 
       }// end construct
-
+//getters
       function getMakeModel() {
         return $this->make_model;
       }
@@ -27,19 +27,62 @@
         return $this->miles;
       }
 
+      function getImagePath(){return $this->image_path;}
+//setters
       function setMakeModel ($new_make_model){$this->make_model = $new_make_model;}
 
       function setPrice($new_price){$this->price = $new_price;}
       function setMiles($new_miles){$this->miles = $new_miles;}
+
+
       function setImagePath($new_image_path){$this->image_path = $new_image_path;}
 
 //print_r();
   }// end car class
 
   $car1 = new Car("miata",5.99,23);
+  $car2 = new Car("Accord", 900, 10000);
+  $car3 = new Car("Civic", 888, 9000);
+  $car4 = new Car("Volvo",666.66,"666,666.00");
+
+
+  $cars = array($car1,$car2,$car3,$car4);
+  $cars_matching_search = array();
+  foreach ($cars as $car) {
+    if ($car->getPrice() < $_GET["price"]) {
+      array_push($cars_matching_search, $car);
+    }
+  }
+
 
 //echo $car1->make_model;
 
 //print_r($car1);
 //var_dump($car1);
 ?>
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Your Car Dealership's Homepage</title>
+  </head>
+  <body>
+    <h1>Your Car Dealership</h1>
+    <ul>
+      <?php
+        foreach($cars_matching_search as $car){
+          echo "<li>". $car->getMakeModel() . "</li>";
+          echo "<ul>";
+            echo "<li>$" . $car->getPrice() . "</li>";
+            echo "<li> Miles: " . $car->getMiles() . "</li>";
+
+          echo "</ul>";
+
+
+        }
+      ?>
+    </ul>
+  </body>
+
+</html>
