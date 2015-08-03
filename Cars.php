@@ -71,7 +71,7 @@
     <h1>Your Car Dealership</h1>
     <ul>
       <?php
-        if (count($cars_matching_search) != 0){
+        if (!empty($cars_matching_search)){
         foreach($cars_matching_search as $car){
             echo "<li>". $car->getMakeModel() . "</li>";
             echo "<ul>";
