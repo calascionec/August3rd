@@ -5,8 +5,9 @@
     private $make_model;
     private $price;
     private $miles;
+    private $image_path;
 
-      public function __construct($make_model = "defaultCar", $price = 0.00, $miles = 0){
+      public function __construct($make_model = "defaultCar", $price = 0.00, $miles = 0,$image_path="http://www.clipartbest.com/cliparts/ace/o9X/aceo9Xzgi.jpeg"){
 
         $this->make_model = $make_model;
         $this->price = $price;
@@ -30,6 +31,7 @@
 
       function setPrice($new_price){$this->price = $new_price;}
       function setMiles($new_miles){$this->miles = $new_miles;}
+      function setImagePath($new_image_path){$this->image_path = $new_image_path;}
 
 //print_r();
   }// end car class
