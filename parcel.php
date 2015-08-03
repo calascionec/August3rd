@@ -54,7 +54,9 @@ class Parcel{
 
 
 }
+
   $a = new Parcel($_GET["length"],$_GET["width"],$_GET["height"],$_GET["weight"]);
+
 
 
 
