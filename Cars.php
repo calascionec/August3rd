@@ -57,7 +57,7 @@
 
 //echo $car1->make_model;
 
-print_r($car1);
+//print_r($car1);
 //var_dump($car1);
 ?>
 
@@ -71,17 +71,22 @@ print_r($car1);
     <h1>Your Car Dealership</h1>
     <ul>
       <?php
+        if (count($cars_matching_search) != 0){
         foreach($cars_matching_search as $car){
-          echo "<li>". $car->getMakeModel() . "</li>";
-          echo "<ul>";
-            echo "<li>$" . $car->getPrice() . "</li>";
-            echo "<li> Miles: " . $car->getMiles() . "</li>";
-            echo "<li><img src=". $car->getImagePath() . "></li>";
+            echo "<li>". $car->getMakeModel() . "</li>";
+            echo "<ul>";
+              echo "<li>$" . $car->getPrice() . "</li>";
+              echo "<li> Miles: " . $car->getMiles() . "</li>";
+              echo "<li><img src=". $car->getImagePath() . "></li>";
 
-          echo "</ul>";
+            echo "</ul>";
+          }//end for each
+
+      }//end if
+      else{echo "No Cars match your criteria";}
 
 
-        }
+
       ?>
     </ul>
   </body>
