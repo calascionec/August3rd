@@ -12,6 +12,7 @@
         $this->make_model = $make_model;
         $this->price = $price;
         $this->miles = $miles;
+        $this->image_path = $image_path;
 
       }// end construct
 //getters
@@ -37,14 +38,13 @@
 
       function setImagePath($new_image_path){$this->image_path = $new_image_path;}
 
-//print_r();
+
   }// end car class
 
-  $car1 = new Car("miata",5.99,23);
-  $car2 = new Car("Accord", 900, 10000);
+  $car1 = new Car("miata",5.99,23, "http://www.clipartbest.com/cliparts/ace/o9X/aceo9Xzgi.jpeg");
+  $car2 = new Car("Accord", 900, 10000,"http://www.wellclean.com/wp-content/themes/artgallery_3.0/images/car3.png");
   $car3 = new Car("Civic", 888, 9000);
   $car4 = new Car("Volvo",666.66,"666,666.00");
-
 
   $cars = array($car1,$car2,$car3,$car4);
   $cars_matching_search = array();
@@ -57,7 +57,7 @@
 
 //echo $car1->make_model;
 
-//print_r($car1);
+print_r($car1);
 //var_dump($car1);
 ?>
 
@@ -76,6 +76,7 @@
           echo "<ul>";
             echo "<li>$" . $car->getPrice() . "</li>";
             echo "<li> Miles: " . $car->getMiles() . "</li>";
+            echo "<li><img src=". $car->getImagePath() . "></li>";
 
           echo "</ul>";
 
